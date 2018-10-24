@@ -1,0 +1,22 @@
+[user]
+	email = adam.dilger@rxpservices.com
+	name = Adam Dilger
+[core]
+	excludesfile = /Users/work/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[alias]
+        tree = log --all --decorate --oneline --graph
+        treeo = log --graph --decorate --pretty=oneline --abbrev-commit
+
+[color]
+  ui = auto
+[color "diff"]
+  meta = yellow
+  frag = cyan
+  old = red bold
+  new = green bold
