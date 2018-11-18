@@ -13,10 +13,11 @@ export PS1="\u:\W\[\033[32m\]\$(parse_git_branch)\[\033[00m\]$ "
 
 #alias
 alias ls="ls -lG"
+alias grep="grep --color=auto"
 alias gs="git status"
+alias gb="git branch"
 alias gdm="git diff master --stat"
 alias json='python -mjson.tool'
-alias iossim='/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/MacOS/Simulator -CurrentDeviceUDID F84EE494-40C6-4585-8EB2-F259B2C3F85B'
 
 #aurora
 alias tmuxpayg="~/tmux_sessions/payg.sh"
