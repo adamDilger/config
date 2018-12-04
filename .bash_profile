@@ -26,3 +26,5 @@ defect() {
   git checkout -b "defect/APAYGAPP-$1"
 }
 alias config='/usr/bin/git --git-dir=/Users/work/.cfg/ --work-tree=/Users/work'
+
+export PATH=/usr/local/bin/:$PATH
