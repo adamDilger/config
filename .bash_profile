@@ -8,6 +8,10 @@ parse_git_branch() {
 #export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
 export PS1="\u:\W\[\033[32m\]\$(parse_git_branch)\[\033[00m\]$ "
 
+#bash history (unlimited)
+HISTSIZE=
+HISTFILESIZE=
+
 #git autocomplete
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
@@ -15,16 +19,18 @@ export PS1="\u:\W\[\033[32m\]\$(parse_git_branch)\[\033[00m\]$ "
 alias ls="ls -lG"
 alias grep="grep --color=auto"
 alias gs="git status"
-alias gb="git branch"
+alias gt="git tree"
+alias gto="git treeo"
 alias gdm="git diff master --stat"
 alias json='python -mjson.tool'
 
 #aurora
 alias tmuxpayg="~/tmux_sessions/payg.sh"
+alias aurorahealth="node ~/dev/aurorahealth/index.js"
 alias aurora="~/Documents/aurora-login.sh"
 defect() {
   git checkout -b "defect/APAYGAPP-$1"
 }
 alias config='/usr/bin/git --git-dir=/Users/work/.cfg/ --work-tree=/Users/work'
 
-export PATH=/usr/local/bin/:$PATH
+export PATH="/usr/local/bin/:/usr/local/opt/curl/bin:$PATH"

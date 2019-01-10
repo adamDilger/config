@@ -7,22 +7,25 @@
 # tmux attach-session
 
 #!/bin/sh
-cd ~/rxp/payg
+cd ~/rxp/payg/payg-fe
 tmux new-session -s 'PAYG' \; \
   new-window \; \
   split-window -h \; \
   send-keys 'cd ResponsiveApp; clear' C-m \; \
   resize-pane -R 40 \; \
   new-session -s 'API' \; \
-  send-keys 'cd ~/rxp/payg-api; clear' C-m \; \
-  attach-session -c ~/rxp/payg-api \; \
+  send-keys 'cd ~/rxp/payg/payg-api; clear' C-m \; \
+  attach-session -c ~/rxp/payg/payg-api \; \
   new-session -s 'ADMIN' \; \
-  send-keys 'cd ~/rxp/payg-admin; clear' C-m \; \
-  attach-session -c ~/rxp/payg-admin \; \
+  send-keys 'cd ~/rxp/payg/payg-admin; clear' C-m \; \
+  attach-session -c ~/rxp/payg/payg-admin \; \
   new-session -s 'BF-API' \; \
-  send-keys 'cd ~/rxp/betfair-api; clear' C-m \; \
-  attach-session -c ~/rxp/betfair-api \; \
+  send-keys 'cd ~/rxp/betfair/betfair-api; clear' C-m \; \
+  attach-session -c ~/rxp/betfair/betfair-api \; \
   new-session -s 'BETFAIR' \; \
-  send-keys 'cd ~/rxp/betfair; clear' C-m \; \
-  attach-session -c ~/rxp/betfair \; \
+  send-keys 'cd ~/rxp/betfair/betfair-fe; clear' C-m \; \
+  attach-session -c ~/rxp/betfair/betfair-fe \; \
+  new-window \; \
+  split-window -h \; \
+  resize-pane -R 40 \; \
   choose-tree -Zs \; \
