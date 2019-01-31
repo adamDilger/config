@@ -31,6 +31,7 @@ alias aurora="~/Documents/aurora-login.sh"
 defect() {
   git checkout -b "defect/APAYGAPP-$1"
 }
-alias config='/usr/bin/git --git-dir=/Users/work/.cfg/ --work-tree=/Users/work'
+
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 export PATH="/usr/local/bin/:/usr/local/opt/curl/bin:$PATH"
