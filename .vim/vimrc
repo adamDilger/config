@@ -4,7 +4,8 @@ Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'mhinz/vim-signify'
-"Plug 'airblade/vim-gitgutter'
+"Plug 'vim-syntastic/syntastic'
+Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -46,6 +47,13 @@ set backspace=indent,eol,start	" Backspace behaviour
 set listchars=tab:>-,trail:~
 set list
 
+
+"" Neomake
+" When writing a buffer (no delay), and on normal mode changes (after 750ms).
+call neomake#configure#automake('rnw', 750)
+let g:neomake_javascript_enabled_makers = ['eslint']
+
+
 "" My additions
 filetype on
 syntax on
@@ -55,6 +63,9 @@ set background=dark
 set colorcolumn=90
 set hidden
 set history=100
+
+"Stop shift K
+map <S-k> <Nop>
 
 " NERDTree
 map <C-o> :NERDTreeToggle<CR>
@@ -95,3 +106,14 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|build'
 set wildignore+=**/node_modules/**,git/**,**/build/**,**/semantic/**,**/android/**,**/ios/**
 " vim signify (gitgutter)
 let g:signify_realtime = 0
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
