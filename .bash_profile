@@ -27,7 +27,7 @@ alias json='python -mjson.tool'
 #aurora
 alias tmuxpayg="~/tmux_sessions/payg.sh"
 alias aurorahealth="node ~/dev/aurorahealth/index.js"
-alias aurora="~/Documents/aurora-login.sh"
+alias aurora="~/scripts/aurora-login.sh"
 defect() {
   git checkout -b "defect/APAYGAPP-$1"
 }

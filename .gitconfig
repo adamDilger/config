@@ -2,7 +2,7 @@
 	email = adam.dilger@rxpservices.com
 	name = Adam Dilger
 [core]
-	excludesfile = /Users/work/.gitignore_global
+  excludesfile = ~/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
