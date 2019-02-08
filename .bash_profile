@@ -16,12 +16,11 @@ HISTFILESIZE=
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 #alias
-alias ls="ls -lG"
+alias ls="ls -l --color=auto"
 alias grep="grep --color=auto"
 alias gs="git status"
 alias gt="git tree"
 alias gto="git treeo"
-alias gdm="git diff master --stat"
 alias json='python -mjson.tool'
 
 #aurora
@@ -35,3 +34,4 @@ defect() {
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 export PATH="/usr/local/bin/:/usr/local/opt/curl/bin:$PATH"
+export EDITOR=vim

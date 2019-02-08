@@ -64,6 +64,10 @@ set colorcolumn=90
 set hidden
 set history=100
 
+"Clipboard remaps
+noremap <Leader>y "+y
+noremap <Leader>p "+p
+
 "Stop shift K
 map <S-k> <Nop>
 
@@ -72,6 +76,7 @@ map <C-o> :NERDTreeToggle<CR>
 
 "insert mode
 inoremap {}<CR> {<CR>}<C-o>O
+inoremap (){}<CR> ({<CR>})<C-o>O
 autocmd InsertEnter,InsertLeave * set cul!
 set timeoutlen=1000 
 set ttimeoutlen=0
