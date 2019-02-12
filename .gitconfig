@@ -20,3 +20,5 @@
   frag = cyan
   old = red bold
   new = green bold
+[credential]
+	helper = store
