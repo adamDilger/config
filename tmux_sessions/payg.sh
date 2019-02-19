@@ -16,8 +16,8 @@ tmux new-session -s 'PAYG' \; \
   new-session -s 'API' \; \
   send-keys 'cd ~/rxp/payg/payg-api; clear' C-m \; \
   attach-session -c ~/rxp/payg/payg-api \; \
-  new-session -s 'ADMIN' \; \
-  send-keys 'cd ~/rxp/payg/payg-admin; clear' C-m \; \
+  new-session -s 'DEV' \; \
+  send-keys 'cd ~; clear' C-m \; \
   attach-session -c ~/rxp/payg/payg-admin \; \
   new-session -s 'BF-API' \; \
   send-keys 'cd ~/rxp/betfair/betfair-api; clear' C-m \; \
