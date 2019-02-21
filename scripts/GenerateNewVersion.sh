@@ -2,9 +2,26 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 WHITE='\033[0m'
 
+exit_program() {
+  if [[ "$PWD" != */ResponsiveApp ]]; then
+    cd ..;
+  fi
+
+  exit 0;
+}
+
+# this allows the script to be run from either the
+# payg-frontend or the payg-frontend/ResponsiveApp directories
+# the script is setup to run from the ResponsiveApp dir
 if [[ "$PWD" != */ResponsiveApp ]]; then
-  echo -e "Please run this from the ${GREEN}payg-frontend/ResponsiveApp${WHITE} directory";
-  exit 1;
+  if [ "$(ls -l | grep ResponsiveApp)" != "" ]; then
+    cd ResponsiveApp;
+  fi
+
+  if [[ "$PWD" != */ResponsiveApp ]]; then
+    echo -e "Please run this from the ${GREEN}payg-frontend${WHITE} directory";
+    exit 1;
+  fi
 fi
 
 clear
@@ -17,7 +34,7 @@ confirm() {
 
   if [ "$CONFIRM" != "y" ]; then
     echo "exiting..."
-    exit 1;
+    exit_program
   fi
 }
 
@@ -30,7 +47,7 @@ run_tests() {
   if [ "$OUT" != "" ]; then
       # one ore more tests have failed
       echo "$OUT"
-      exit 1
+      exit_program
   fi
 
   echo "Tests passed."
@@ -62,9 +79,10 @@ git diff
 
 confirm "About to push these changes to master, proceed?"
 
-git commit -am "Version bump $VERSION"
+git add package.json
+git commit -m "Version bump $VERSION"
 git push
 git tag "release/$VERSION"
 git push --tags
 
-exit 0
+exit_program
