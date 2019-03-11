@@ -1,4 +1,5 @@
-export ANDROID_HOME=/Users/$USER/Library/Android/sdk
+# export ANDROID_HOME=/Users/$USER/Library/Android/sdk
+export ANDROID_HOME=/android/android-sdk
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 # Git branch in prompt.
@@ -13,6 +14,9 @@ export PS1="\[\033[94m\]\u\[\033[00m\]:\W\\[\033[32m\]\$(parse_git_branch)\[\033
 #bash history (unlimited)
 HISTSIZE=
 HISTFILESIZE=
+
+#tty fixes for vim
+stty -ixon
 
 #git autocomplete
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
@@ -37,3 +41,6 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 export PATH="/usr/local/bin/:/usr/local/opt/curl/bin:$PATH"
 export EDITOR=vim
+
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

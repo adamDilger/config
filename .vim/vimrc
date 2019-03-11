@@ -4,20 +4,22 @@ Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'mhinz/vim-signify'
-"Plug 'vim-syntastic/syntastic'
 Plug 'leafgarland/typescript-vim'
 Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 "" Leader
 let mapleader = " "
 
 "" General
+set noswapfile
 set number " Show line number on current line
 "set relativenumber	" Show relative numbers
 set linebreak	" Break lines at word (requires Wrap lines)
@@ -36,8 +38,9 @@ set shiftwidth=2	" Number of auto-indent spaces
 set smartindent	" Enable smart-indent
 set smarttab	" Enable smart-tabs
 set softtabstop=2	" Number of spaces per Tab
-"set foldmethod=indent
-"set foldlevel=2
+set foldmethod=syntax
+set foldlevel=2
+set nofoldenable
  
 "" Advanced
 set ruler	" Show row and column ruler information
@@ -51,9 +54,8 @@ set list
 
 "" Neomake
 " When writing a buffer (no delay), and on normal mode changes (after 750ms).
-call neomake#configure#automake('rnw', 750)
+" call neomake#configure#automake('rnw', 750)
 let g:neomake_javascript_enabled_makers = ['eslint']
-
 
 "" My additions
 filetype on
@@ -74,6 +76,27 @@ map <S-k> <Nop>
 
 " NERDTree
 map <C-o> :NERDTreeToggle<CR>
+
+" fzf
+nnoremap <C-p> :GFiles<CR>
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+let g:fzf_layout = { 'down': '~20%' }
 
 "insert mode
 inoremap {}<CR> {<CR>}<C-o>O
@@ -112,14 +135,3 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|build'
 set wildignore+=**/node_modules/**,git/**,**/build/**,**/semantic/**,**/android/**,**/ios/**
 " vim signify (gitgutter)
 let g:signify_realtime = 0
-
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
