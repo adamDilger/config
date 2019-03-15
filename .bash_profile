@@ -1,6 +1,6 @@
 # export ANDROID_HOME=/Users/$USER/Library/Android/sdk
 export ANDROID_HOME=/android/android-sdk
-export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$ANDROID_HOME/emulator
 
 # Git branch in prompt.
 parse_git_branch() {
@@ -42,5 +42,10 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 export PATH="/usr/local/bin/:/usr/local/opt/curl/bin:$PATH"
 export EDITOR=vim
 
+#FZF
+# need to work out how to use layout=normal in vim
+# export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
+notes() { FILE=$(\ls "$HOME/notes/" | fzf --layout=reverse --height 40% --preview "head -100 $HOME/notes/{}"); [ -z "$FILE" ] || vim "$HOME/notes/$FILE"; }
+gcheck() { BRANCH=$(git branch | fzf --layout=reverse --height 40%); [ -z "$BRANCH" ] || git checkout $BRANCH; }
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

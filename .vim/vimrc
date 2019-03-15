@@ -78,6 +78,7 @@ map <S-k> <Nop>
 map <C-o> :NERDTreeToggle<CR>
 
 " fzf
+nnoremap <C-P> :Files<CR>
 nnoremap <C-p> :GFiles<CR>
 
 " Customize fzf colors to match your color scheme
