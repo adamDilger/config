@@ -18,6 +18,9 @@ HISTFILESIZE=
 #tty fixes for vim
 stty -ixon
 
+#escape map
+setxkbmap -option caps:escape
+
 #git autocomplete
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
@@ -46,6 +49,6 @@ export EDITOR=vim
 # need to work out how to use layout=normal in vim
 # export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 notes() { FILE=$(\ls "$HOME/notes/" | fzf --layout=reverse --height 40% --preview "head -100 $HOME/notes/{}"); [ -z "$FILE" ] || vim "$HOME/notes/$FILE"; }
-gcheck() { BRANCH=$(git branch | fzf --layout=reverse --height 40%); [ -z "$BRANCH" ] || git checkout $BRANCH; }
+gc() { BRANCH=$(git branch | fzf --layout=reverse --height 40%); [ -z "$BRANCH" ] || git checkout $BRANCH; }
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
