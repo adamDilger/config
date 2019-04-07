@@ -101,7 +101,6 @@ let g:fzf_layout = { 'down': '~20%' }
 
 "insert mode
 inoremap {}<CR> {<CR>}<C-o>O
-inoremap (){}<CR> ({<CR>})<C-o>O
 autocmd InsertEnter,InsertLeave * set cul!
 set timeoutlen=1000 
 set ttimeoutlen=0
@@ -120,6 +119,10 @@ set splitbelow
 set splitright
 set guioptions-=L
 
+"airline
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline_section_y=""
+
 if has("gui_running")
   if has("gui_gtk2")
     set guifont=Inconsolata\ 12
@@ -129,6 +132,10 @@ if has("gui_running")
     set guifont=Consolas:h11:cANSI
   endif
 endif
+
+"React macros
+" comment out jsx code
+xnoremap <leader>* <esc>:norm `<O{ /*<esc>`>o*/ }<esc>
 
 " ControlP
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|build'
