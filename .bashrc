@@ -18,9 +18,6 @@ HISTFILESIZE=
 #tty fixes for vim
 stty -ixon
 
-#escape map
-setxkbmap -option caps:escape
-
 #git autocomplete
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
