@@ -8,7 +8,6 @@ Plug 'leafgarland/typescript-vim'
 Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -24,7 +23,7 @@ set number " Show line number on current line
 "set relativenumber	" Show relative numbers
 set linebreak	" Break lines at word (requires Wrap lines)
 set showbreak=+++	" Wrap-broken line prefix
-set textwidth=100	" Line wrap (number of cols)
+" set textwidth=100	" Line wrap (number of cols)
 set showmatch	" Highlight matching brace
  
 "set hlsearch	" Highlight all search results
@@ -38,8 +37,8 @@ set shiftwidth=2	" Number of auto-indent spaces
 set smartindent	" Enable smart-indent
 set smarttab	" Enable smart-tabs
 set softtabstop=2	" Number of spaces per Tab
-set foldmethod=syntax
-set foldlevel=2
+set foldmethod=manual
+" set foldlevel=2
 set nofoldenable
  
 "" Advanced
@@ -66,16 +65,21 @@ set background=dark
 set colorcolumn=90
 set hidden
 set history=100
+set dictionary+=/usr/share/dict/words
 
 "Clipboard remaps
 noremap <Leader>y "+y
 noremap <Leader>p "+p
 
-"Stop shift K
-map <S-k> <Nop>
+" JumpList
+noremap <S-k> <C-o>
 
 " NERDTree
 map <C-o> :NERDTreeToggle<CR>
+" set project bookmark files
+if isdirectory(expand(".git"))
+  let g:NERDTreeBookmarksFile = '.git/.nerdtree-bookmarks'
+endif
 
 " fzf
 nnoremap <C-p> :GFiles<CR>
@@ -122,23 +126,17 @@ set guioptions-=L
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_section_y=""
 
-if has("gui_running")
-  if has("gui_gtk2")
-    set guifont=Inconsolata\ 12
-  elseif has("gui_macvim")
-    set guifont=Menlo\ Regular:h14
-  elseif has("gui_win32")
-    set guifont=Consolas:h11:cANSI
-  endif
-endif
+"" handy macros
+nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
 
 "React macros
 " comment out jsx code
 xnoremap <leader>* <esc>:norm `<O{ /*<esc>`>o*/ }<esc>
 
-" ControlP
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|build'
 "vimgrep
 set wildignore+=**/node_modules/**,git/**,**/build/**,**/semantic/**,**/android/**,**/ios/**
 " vim signify (gitgutter)
 let g:signify_realtime = 0
+
+" Open Commands
+nnoremap <leader>oc :!code . -g %<CR>

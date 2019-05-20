@@ -37,5 +37,5 @@ if ! grep 3389 $RDPFILE > /dev/null; then
 else
         echo Retreived $RDPFILE ... Starting RDP...
         # xfreerdp $RDPFILE /size:1910x1012
-        nohup xfreerdp $RDPFILE /size:1920x1020 +clipboard &>/dev/null &
+        nohup xfreerdp $RDPFILE /size:1919x1020 +clipboard &>/dev/null &
 fi
