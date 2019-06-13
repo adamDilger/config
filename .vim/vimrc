@@ -8,6 +8,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -128,6 +129,7 @@ let g:airline_section_y=""
 
 "" handy macros
 nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
+vnoremap <Leader>ag y:Ag <C-R>"<CR>
 
 "React macros
 " comment out jsx code
