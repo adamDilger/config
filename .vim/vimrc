@@ -15,6 +15,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 call plug#end()
 
+"" auto load vimrc updates
+"autocmd bufwritepost vimrc source $MYVIMRC
+
 "" Leader
 let mapleader = " "
 
@@ -130,6 +133,11 @@ let g:airline_section_y=""
 "" handy macros
 nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
 vnoremap <Leader>ag y:Ag <C-R>"<CR>
+nnoremap <Leader>js :%!python -mjson.tool<CR>:set filetype=json<CR>:echomsg "Formatted as JSON"<CR>
+
+"React macros
+" comment out jsx code
+xnoremap <leader>* <esc>:norm `<O{ /*<esc>`>o*/ }<esc>
 
 "React macros
 " comment out jsx code
