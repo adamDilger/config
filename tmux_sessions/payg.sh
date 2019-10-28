@@ -18,7 +18,10 @@ tmux new-session -s 'PAYG' \; \
   attach-session -c ~/rxp/payg/payg-api \; \
   new-session -s 'DEV' \; \
   send-keys 'cd ~; clear' C-m \; \
-  attach-session -c ~/rxp/payg/payg-admin \; \
+  attach-session -c ~/ \; \
+  new-session -s 'METHOD' \; \
+  send-keys 'cd ~/rxp/methodcards/MethodCardsCore/ClientApp; clear' C-m \; \
+  attach-session -c ~/rxp/methodcards/MethodCardsCore/ClientApp \; \
   new-session -s 'BF-API' \; \
   send-keys 'cd ~/rxp/betfair/betfair-api; clear' C-m \; \
   attach-session -c ~/rxp/betfair/betfair-api \; \
@@ -28,4 +31,4 @@ tmux new-session -s 'PAYG' \; \
   new-window \; \
   split-window -h \; \
   resize-pane -R 40 \; \
-  choose-tree -Zs \; \
+  choose-tree -Zs;
