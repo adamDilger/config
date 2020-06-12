@@ -3,6 +3,8 @@
 	name = Adam Dilger
 [core]
   excludesfile = ~/.gitignore_global
+[alias]
+        diffc = diff --cached
 [color]
   ui = auto
 [color "diff"]
@@ -12,3 +14,9 @@
   new = green bold
 [credential]
 	helper = store
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[difftool]
+	prompt = false

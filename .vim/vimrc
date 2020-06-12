@@ -4,15 +4,21 @@ Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'mhinz/vim-signify'
-Plug 'leafgarland/typescript-vim'
-Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+Plug 'mattn/emmet-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'SirVer/ultisnips'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Language specific plugins
+Plug 'andreshazard/vim-freemarker'
+Plug 'lepture/vim-velocity'
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'dart-lang/dart-vim-plugin'
 call plug#end()
 
 "" auto load vimrc updates
@@ -24,17 +30,14 @@ let mapleader = " "
 "" General
 set noswapfile
 set number " Show line number on current line
-"set relativenumber	" Show relative numbers
 set linebreak	" Break lines at word (requires Wrap lines)
 set showbreak=+++	" Wrap-broken line prefix
-" set textwidth=100	" Line wrap (number of cols)
 set showmatch	" Highlight matching brace
- 
+
 "set hlsearch	" Highlight all search results
 set smartcase	" Enable smart-case search
 set ignorecase	" Always case-insensitive
 set incsearch	" Searches for strings incrementally
- 
 set autoindent	" Auto-indent new lines
 set expandtab	" Use spaces instead of tabs
 set shiftwidth=2	" Number of auto-indent spaces
@@ -42,23 +45,14 @@ set smartindent	" Enable smart-indent
 set smarttab	" Enable smart-tabs
 set softtabstop=2	" Number of spaces per Tab
 set foldmethod=manual
-" set foldlevel=2
 set nofoldenable
- 
+
 "" Advanced
 set ruler	" Show row and column ruler information
- 
 set undolevels=1000	" Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
-
 set listchars=tab:>-,trail:~
 set list
-
-
-"" Neomake
-" When writing a buffer (no delay), and on normal mode changes (after 750ms).
-" call neomake#configure#automake('rnw', 750)
-let g:neomake_javascript_enabled_makers = ['eslint']
 
 "" My additions
 filetype on
@@ -69,17 +63,14 @@ set background=dark
 set colorcolumn=90
 set hidden
 set history=100
-set dictionary+=/usr/share/dict/words
 
 "Clipboard remaps
 noremap <Leader>y "+y
-noremap <Leader>p "+p
-
-" JumpList
-noremap <S-k> <C-o>
+noremap <Leader>p "+P
 
 " NERDTree
-map <C-o> :NERDTreeToggle<CR>
+map <Leader>o :NERDTreeToggle<CR>
+map <Leader>n :NERDTreeFind<CR>
 " set project bookmark files
 if isdirectory(expand(".git"))
   let g:NERDTreeBookmarksFile = '.git/.nerdtree-bookmarks'
@@ -109,7 +100,7 @@ let g:fzf_layout = { 'down': '~20%' }
 "insert mode
 inoremap {}<CR> {<CR>}<C-o>O
 autocmd InsertEnter,InsertLeave * set cul!
-set timeoutlen=1000 
+set timeoutlen=1000
 set ttimeoutlen=0
 
 " split remaps
@@ -117,10 +108,10 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-nnoremap <leader>> 10<C-W>>
-nnoremap <leader>< 10<C-W><
-nnoremap <leader>- 10<C-W>-
-nnoremap <leader>+ 10<C-W>+
+nnoremap <leader>> 20<C-W>>
+nnoremap <leader>< 20<C-W><
+nnoremap <leader>- 20<C-W>-
+nnoremap <leader>+ 20<C-W>+
 
 set splitbelow
 set splitright
@@ -133,9 +124,9 @@ let g:airline_section_y=""
 "" handy macros
 nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
 vnoremap <Leader>ag y:Ag <C-R>"<CR>
-nnoremap <Leader>js :%!python -mjson.tool<CR>:set filetype=json<CR>:echomsg "Formatted as JSON"<CR>
+nnoremap <Leader>fjs :%!python -mjson.tool<CR>:set filetype=json<CR>:echomsg "Formatted as JSON"<CR>
 
-"React macros
+" React macros
 " comment out jsx code
 xnoremap <leader>* <esc>:norm `<O{ /*<esc>`>o*/ }<esc>
 
@@ -143,10 +134,25 @@ xnoremap <leader>* <esc>:norm `<O{ /*<esc>`>o*/ }<esc>
 " comment out jsx code
 xnoremap <leader>* <esc>:norm `<O{ /*<esc>`>o*/ }<esc>
 
-"vimgrep
-set wildignore+=**/node_modules/**,git/**,**/build/**,**/semantic/**,**/android/**,**/ios/**
+" Velocity Templating
+au BufNewFile,BufRead *.vtl set ft=velocity
+
 " vim signify (gitgutter)
 let g:signify_realtime = 0
 
 " Open Commands
-nnoremap <leader>oc :!code . -g %<CR>
+" nnoremap <leader>oc :!code . -g %<CR>
+" nnoremap <leader>os :!subl . %<CR>
+
+" Ultisnips snippets
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsEditSplit="vertical"
+
+" CoC
+" Remap keys for gotos
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gt <Plug>(coc-type-definition)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gf <Plug>(coc-references)
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-A> coc#refresh()
