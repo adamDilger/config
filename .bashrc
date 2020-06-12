@@ -22,29 +22,28 @@ stty -ixon
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 #alias
-alias ls="ls -l --color=auto"
-alias grep="grep --color=auto"
-alias gs="git status"
-alias gt="git tree"
-alias gto="git treeo"
-alias json='python -mjson.tool'
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  alias ls="ls -l --color=auto"
+  alias grep="grep --color=auto"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  alias ls="ls -lG"
+fi
 
-#aurora
-alias tmuxpayg="~/tmux_sessions/payg.sh"
-alias aurorahealth="node ~/dev/aurorahealth/index.js"
-alias aurora="~/scripts/aurora-login.sh"
-defect() {
-  git checkout -b "defect/APAYGAPP-$1"
-}
+alias gs="git status"
+alias gt="git log --graph --decorate --oneline --all "
+alias gto="git log --graph --decorate --oneline"
+alias json='python -mjson.tool'
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 export EDITOR=vim
 
+# DEVICE SPECIFIC CONFIG
+[ -f ~/.device_bashrc ] && source ~/.device_bashrc;
+
 #FZF
 # need to work out how to use layout=normal in vim
 # export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
-notes() { FILE=$(\ls "$HOME/notes/" | fzf --layout=reverse --height 40% --preview "head -100 $HOME/notes/{}"); [ -z "$FILE" ] || vim "$HOME/notes/$FILE"; }
 gc() { BRANCH=$(git branch | fzf --layout=reverse --height 40%); [ -z "$BRANCH" ] || git checkout $BRANCH; }
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

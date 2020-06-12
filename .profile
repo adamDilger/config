@@ -26,4 +26,6 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-setxkbmap -option caps:escape
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  setxkbmap -option caps:escape;
+fi
