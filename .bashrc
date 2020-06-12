@@ -47,4 +47,6 @@ export EDITOR=vim
 notes() { FILE=$(\ls "$HOME/notes/" | fzf --layout=reverse --height 40% --preview "head -100 $HOME/notes/{}"); [ -z "$FILE" ] || vim "$HOME/notes/$FILE"; }
 gc() { BRANCH=$(git branch | fzf --layout=reverse --height 40%); [ -z "$BRANCH" ] || git checkout $BRANCH; }
 
+findfile() { find . -name "*$1*"; }
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
