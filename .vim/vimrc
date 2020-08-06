@@ -66,7 +66,8 @@ set history=100
 
 "Clipboard remaps
 noremap <Leader>y "+y
-noremap <Leader>p "+P
+noremap <Leader>P "+P
+noremap <Leader>p "+p
 
 " NERDTree
 map <Leader>o :NERDTreeToggle<CR>

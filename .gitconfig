@@ -4,6 +4,8 @@
 [core]
   excludesfile = ~/.gitignore_global
 [alias]
+        tree = log --all --decorate --oneline --graph
+        treeo = log --graph --decorate --pretty=oneline --abbrev-commit
         diffc = diff --cached
 [color]
   ui = auto
