@@ -24,11 +24,11 @@ stty -ixon
 #alias
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   alias ls="ls -l --color=auto"
-  alias grep="grep --color=auto"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   alias ls="ls -lG"
 fi
 
+alias grep="grep --color=auto"
 alias gs="git status"
 alias gt="git log --graph --decorate --oneline --all "
 alias gto="git log --graph --decorate --oneline"

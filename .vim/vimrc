@@ -1,7 +1,7 @@
 " VimPlug
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
@@ -10,7 +10,6 @@ Plug 'mattn/emmet-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Language specific plugins
 Plug 'andreshazard/vim-freemarker'
@@ -72,6 +71,7 @@ noremap <Leader>p "+p
 " NERDTree
 map <Leader>o :NERDTreeToggle<CR>
 map <Leader>n :NERDTreeFind<CR>
+let g:NERDTreeIgnore = ['node_modules$', '^tags$', '^target$']
 " set project bookmark files
 if isdirectory(expand(".git"))
   let g:NERDTreeBookmarksFile = '.git/.nerdtree-bookmarks'
@@ -148,12 +148,3 @@ let g:signify_realtime = 0
 " Ultisnips snippets
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsEditSplit="vertical"
-
-" CoC
-" Remap keys for gotos
-nmap <silent> <leader>gd <Plug>(coc-definition)
-nmap <silent> <leader>gt <Plug>(coc-type-definition)
-nmap <silent> <leader>gi <Plug>(coc-implementation)
-nmap <silent> <leader>gf <Plug>(coc-references)
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-A> coc#refresh()
