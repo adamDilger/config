@@ -44,7 +44,7 @@ export EDITOR=vim
 #FZF
 # need to work out how to use layout=normal in vim
 # export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
-gc() { BRANCH=$(git branch | fzf --layout=reverse --height 40%); [ -z "$BRANCH" ] || git checkout $BRANCH; }
+gc() { git branch | fzf --layout=reverse --height 40% | xargs git checkout; }
 
 findfile() { find . -name "*$1*"; }
 

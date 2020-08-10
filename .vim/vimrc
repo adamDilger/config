@@ -6,6 +6,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -27,6 +28,7 @@ call plug#end()
 let mapleader = " "
 
 "" General
+set nocompatible
 set noswapfile
 set number " Show line number on current line
 set linebreak	" Break lines at word (requires Wrap lines)
