@@ -22,3 +22,5 @@
   prompt = false
 [init]
   templatedir = ~/.config/git
+[pull]
+	rebase = false

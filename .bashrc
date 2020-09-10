@@ -32,6 +32,7 @@ alias grep="grep --color=auto"
 alias gs="git status"
 alias gt="git log --graph --decorate --oneline --all "
 alias gto="git log --graph --decorate --oneline"
+alias lg="lazygit"
 alias json='python -mjson.tool'
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
