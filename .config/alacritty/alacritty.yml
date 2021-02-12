@@ -78,6 +78,11 @@
   # Set this to `None` to use the default theme variant.
   #gtk_theme_variant: None
 
+window:
+  dimensions:
+    columns: 0
+    lines: 50
+
 #scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.

@@ -11,6 +11,7 @@ Plug 'mattn/emmet-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Language specific plugins
 Plug 'andreshazard/vim-freemarker'
@@ -19,6 +20,7 @@ Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'posva/vim-vue'
 call plug#end()
 
 "" auto load vimrc updates
@@ -47,6 +49,7 @@ set smarttab	" Enable smart-tabs
 set softtabstop=2	" Number of spaces per Tab
 set foldmethod=manual
 set nofoldenable
+set tabstop=2
 
 "" Advanced
 set ruler	" Show row and column ruler information
@@ -88,19 +91,19 @@ nnoremap <C-p> :GFiles<CR>
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+ \ { 'fg':      ['fg', 'Normal'],
+ \ 'bg':      ['bg', 'Normal'],
+ \ 'hl':      ['fg', 'Comment'],
+ \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+ \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+ \ 'hl+':     ['fg', 'Statement'],
+ \ 'info':    ['fg', 'PreProc'],
+ \ 'border':  ['fg', 'Ignore'],
+ \ 'prompt':  ['fg', 'Conditional'],
+ \ 'pointer': ['fg', 'Exception'],
+ \ 'marker':  ['fg', 'Keyword'],
+ \ 'spinner': ['fg', 'Label'],
+ \ 'header':  ['fg', 'Comment'] }
 
 let g:fzf_layout = { 'down': '~20%' }
 

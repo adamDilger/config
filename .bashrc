@@ -1,7 +1,3 @@
-# export ANDROID_HOME=/Users/$USER/Library/Android/sdk
-export ANDROID_HOME=/android/android-sdk
-export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$ANDROID_HOME/emulator
-
 # Git branch in prompt.
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
@@ -10,6 +6,8 @@ parse_git_branch() {
 #color        \[\033[32m\]
 
 export PS1="\[\033[94m\]\u\[\033[00m\]:\W\\[\033[32m\]\$(parse_git_branch)\[\033[00m\]\$ "
+
+PATH="$PATH:~/scripts/";
 
 #bash history (unlimited)
 HISTSIZE=
@@ -50,3 +48,8 @@ gc() { git branch | fzf --layout=reverse --height 40% | xargs git checkout; }
 findfile() { find . -name "*$1*"; }
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="$PATH:/opt/mssql-tools/bin"
