@@ -21,9 +21,9 @@ stty -ixon
 
 #alias
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  alias ls="ls -l --color=auto"
+  alias ls="ls -lh --color=auto"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-  alias ls="ls -lG"
+  alias ls="ls -hlG"
 fi
 
 alias grep="grep --color=auto"
@@ -44,6 +44,7 @@ export EDITOR=vim
 # need to work out how to use layout=normal in vim
 # export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 gc() { git branch | fzf --layout=reverse --height 40% | xargs git checkout; }
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
 
 findfile() { find . -name "*$1*"; }
 

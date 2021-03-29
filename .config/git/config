@@ -2,7 +2,7 @@
   email = adamdilger1@gmail.com
   name = Adam Dilger
 [alias]
-  tree = log --all --decorate --oneline --graph
+  tree = log --branches --remotes --tags --decorate --oneline --graph
   treeo = log --graph --decorate --pretty=oneline --abbrev-commit
   diffc = diff --cached
 [color]
